@@ -74,7 +74,7 @@ export default function Support() {
     }
 
     emailjs
-      .sendForm('service_ja39tf9', 'template_4n316zm', form.current, 'XYkfwJDieS29jvxIY')
+      .sendForm('service_pyy6qj8', 'template_p94fjb7', form.current, '7RJoLNrQdqVJt9kup')
       .then(
         () => {
           console.log('SUCCESS!');
