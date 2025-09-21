@@ -4,12 +4,10 @@ const pdf = require('html-pdf');
 const cors = require("cors");
 const { resolve } = require('path');
 const nodeMailer = require("nodemailer");
-
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 const multer = require('multer');
-
-const env = require('dotenv').config({ path: './.env' });
+const env = require('dotenv');
 const bodyParser = require('body-parser');
 const stripe = require('stripe')('sk_test_51P0Ggb02NNbm5WjcvAZ8IAsOgpidQiTfSeqewumWezdCAORzNCcfATJXnNGG0CIMHcqOcFsjigLKuKgMrJJHMNhW00vtdgHWvv');
 const BankCardModel = require("./models/BankCards");
@@ -30,14 +28,14 @@ const ViewBatleModel = require("./models/Viewsbatle");
 // feedback and faq
 const FeedbackModel =require('./models/Feedback')
 const FaqModel  =require('./models/faqs')
-
-
-
 const pdfTemplate = require('./documents');
 
 const UserModel = require('./models/User');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+
+// .env config
+require('dotenv').config();
 
 const store = session.MemoryStore();
 
@@ -68,7 +66,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 mongoose.connect(
-  "mongodb+srv://pinnacleitp:pinnacle123@crud.vsshiuj.mongodb.net/?retryWrites=true&w=majority&appName=crud",
+  process.env.MONGO_URL,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
